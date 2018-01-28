@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="site-head">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+    <meta th:include="this :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:fragment="site-header">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <nav class="navbar">
+    <a href="index.html" th:href="@{/}">Home</a>
+    <a href="users/login.html" th:href="@{/users/login}">Login</a>
+    <a href="users/register.html" th:href="@{/users/register}">Register</a>
+    <a href="posts/index.html" th:href="@{/posts}">Posts</a>
+    <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
+    <a href="users/index.html" th:href="@{/users}">Users</a>
+    <div id="logged-in-info"> <span>Hello, <b>(user)</b></span>
+        <form method="post" th:action="@{/users/logout}">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+    </nav>
+</header>
+
+
+ <h1>Welcome</h1>
+<p>Welcome to the Spring MVC Blog.</p>
+<footer th:fragment="site-footer">
+    &copy; Wojciech Prokurat Forum
+</footer></body></html>
