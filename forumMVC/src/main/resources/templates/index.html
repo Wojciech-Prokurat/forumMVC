@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+
+        <title>Forum</title>
+</head>
+<header th:replace="layout :: site-header"/>
+
+
+
+<body>
+<h1>Welcome to Spring MVC</h1>
+Now is: <b th:text="${execInfo.now.time}"></b>
+
+
+
+
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>

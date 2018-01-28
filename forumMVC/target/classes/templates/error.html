@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+
+    <title>Forum</title>
+</head>
+<header th:replace="layout :: site-header"/>
+
+
+
+<body>
+<div id="main" class="container">
+
+    <div>
+        <h1>Domyślny widok błędu w Spring Boot</h1>
+        <div>
+            Wiadomość: <span th:text="${message}"></span></br>
+            Wyjątek: <span th:text="${exception}"></span></br>
+
+            StackTrace: <span th:text="${stackTrace}" ></span>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>
