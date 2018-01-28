@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="layout :: site-head">
-
-    <title>Forum</title>
+<head>
+    <div th:replace="shared/header :: header-css"/>
+    <title>Strona domowa</title>
 </head>
-<header th:replace="layout :: site-header"/>
-
-
-
 <body>
+<div th:replace="shared/header :: header('home')"/>
+
 <div id="main" class="container">
 
     <div>
@@ -23,11 +20,6 @@
     </div>
 
 </div>
-
-
-
-
-<footer th:replace="layout :: site-footer" />
+<div th:replace="shared/footer :: footer"></div>
 </body>
-
 </html>

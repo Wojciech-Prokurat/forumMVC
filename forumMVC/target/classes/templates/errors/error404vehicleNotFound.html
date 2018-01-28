@@ -10,12 +10,10 @@
 <div id="main" class="container">
 
     <div>
-        <h1>Domyślny widok błędu w Spring Boot</h1>
+        <h1>404 - Nie znaleziono pojazdu</h1>
         <div>
-            Wiadomość: <span th:text="${message}"></span></br>
-            Wyjątek: <span th:text="${exception}"></span></br>
-
-            StackTrace: <span th:text="${stackTrace}" ></span>
+            URL żądania: <span th:text="${url}"></span></br>
+            Wyjątek: <span th:object="${exception}" th:text="*{message}"></span>
         </div>
     </div>
 

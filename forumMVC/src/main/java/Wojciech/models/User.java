@@ -1,47 +1,54 @@
-package Wojciech.models;
+package forum.models;
 
-import java.util.HashSet;
+import forum.validators.annotations.UniqueUsername;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.management.relation.Role;
+import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
- * Created by Użytkownik on 27.01.2018.
+ * Created by grzesiek on 23.08.2017.
  */
+@Entity
+@Table(name = "users")
+@Getter @Setter
+@NoArgsConstructor
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 4, max = 36)
+    @UniqueUsername
     private String username;
-    private String passwordHash;
+    private String password;
+    @Transient//nie będzie odwzorowana w db
+    private String passwordConfirm;
+    private boolean enabled = false;
 
-
-    public User() {
+    @AssertTrue
+    private boolean isPasswordsEquals(){
+        return password == null || passwordConfirm == null || password.equals(passwordConfirm);
     }
 
-    public User(Long id, String username) {
-        this.id = id;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public User(String username){
+        this(username, false);
+    }
+
+    public User(String username, boolean enabled){
         this.username = username;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+        this.enabled = enabled;
     }
 
 }

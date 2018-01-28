@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <div th:replace="shared/header :: header-css"/>
     <title>Strona domowa</title>
@@ -10,12 +10,11 @@
 <div id="main" class="container">
 
     <div>
-        <h1>Domyślny widok błędu w Spring Boot</h1>
+        <h1>403 - Odmowa dostępu</h1>
         <div>
-            Wiadomość: <span th:text="${message}"></span></br>
-            Wyjątek: <span th:text="${exception}"></span></br>
-
-            StackTrace: <span th:text="${stackTrace}" ></span>
+            <div>Witaj <span sec:authentication="name"/>!
+                nie masz odpowiednich praw dostępu do żądanej strony.
+            </div>
         </div>
     </div>
 
